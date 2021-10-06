@@ -1,5 +1,6 @@
 {
   "name": "gv-test",
+  "type": "module",
   "scripts": {
     "buildOnWindows": "wasi-sdk\\bin\\clang -Os --sysroot wasi-sdk/share/wasi-sysroot -Igraphviz/lib/gvc -Igraphviz/lib/common -Igraphviz/lib/pathplan -Igraphviz/lib/cgraph -Igraphviz/lib/cdt -nostartfiles -D_WASI_EMULATED_SIGNAL -D_SIGNAL_H -Wl,--no-entry dot2svg.c -o dot2svg.wasm"
   }

@@ -5,10 +5,9 @@
 #define WASM_EXPORT_AS(name) __attribute__((export_name(name)))
 #define WASM_EXPORT(symbol) WASM_EXPORT_AS(#symbol) symbol
 
-// const char* graphString = "digraph { a -> b }";
 
 void dot2svg_render(const char* dot, char** svg, unsigned int* svgLength) {
-    GVC_t* context = gvContext();
+    GVC_t* context = gvContextPlugins(lt_preloaded_symbols, false);
     if (context) {
         Agraph_t* graph = agmemread(dot);
         if (graph) {

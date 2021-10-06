@@ -1,2 +1,5 @@
 wasi-sdk
 graphviz
+*.wat
+*.wasm
+*.svg
