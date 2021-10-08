@@ -19,5 +19,14 @@ LIBDIRS=\
 	-L./graphviz/lib/pathplan/.libs \
 	-L./graphviz/plugin/core/.libs \
 
+LIBS=\
+	-lgvplugin_core_C \
+	-lgvc_C \
+	-lcgraph_C \
+	-lcdt_C \
+	-lgvplugin_dot_layout_C \
+	-lpathplan_C \
+
 dot2svg.wasm: $(SOURCES)
-	$(CC) $(CFLAGS) $(INCDIRS) $(LIBDIRS) -lgvplugin_core_C -lgvc_C -lcgraph_C -lcdt_C -lgvplugin_dot_layout_C -lpathplan_C -nostartfiles -Wl,--no-entry $^ -o $@
+	$(CC) $(CFLAGS) $(INCDIRS) $(LIBDIRS) $(LIBS) -nostartfiles -Wl,--no-entry $^ -o $@
+
