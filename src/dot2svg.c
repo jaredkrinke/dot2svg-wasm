@@ -1,6 +1,6 @@
 #include <malloc.h>
 #include <string.h>
-#include <graphviz/gvc.h>
+#include <gvc.h>
 
 #define WASM_EXPORT_AS(name) __attribute__((export_name(name)))
 #define WASM_EXPORT(symbol) WASM_EXPORT_AS(#symbol) symbol

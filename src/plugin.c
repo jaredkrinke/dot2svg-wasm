@@ -8,7 +8,7 @@
  * Contributors: Details at https://graphviz.org
  *************************************************************************/
 
-#include <graphviz/gvplugin.h>
+#include <gvplugin.h>
 
 extern gvplugin_installed_t gvdevice_dot_types[];
 extern gvplugin_installed_t gvdevice_svg_types[];

@@ -3,6 +3,13 @@ SOURCES=\
 	src/plugin.c \
 	src/undefined.c \
 
+INCDIRS=\
+	-I./graphviz/lib/common \
+	-I./graphviz/lib/cdt \
+	-I./graphviz/lib/cgraph \
+	-I./graphviz/lib/gvc \
+	-I./graphviz/lib/pathplan \
+
 LIBDIRS=\
 	-L./graphviz/lib/gvc/.libs \
 	-L./graphviz/lib/common/.libs \
@@ -13,4 +20,4 @@ LIBDIRS=\
 	-L./graphviz/plugin/core/.libs \
 
 dot2svg.wasm: $(SOURCES)
-	$(CC) $(CFLAGS) -I./graphviz/test/include $(LIBDIRS) -lgvplugin_core_C -lgvc_C -lcgraph_C -lcdt_C -lgvplugin_dot_layout_C -lpathplan_C -nostartfiles -Wl,--no-entry $^ -o $@
+	$(CC) $(CFLAGS) $(INCDIRS) $(LIBDIRS) -lgvplugin_core_C -lgvc_C -lcgraph_C -lcdt_C -lgvplugin_dot_layout_C -lpathplan_C -nostartfiles -Wl,--no-entry $^ -o $@

@@ -9,6 +9,7 @@ export CXXFLAGS="$CFLAGS"
 export PATH="/opt/wasi-sdk/bin:$PATH"
 
 cd graphviz
+./autogen.sh
 ./configure --host=wasm32 --disable-shared
 make
 cd ..
