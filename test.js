@@ -186,7 +186,7 @@ var wasiPolyfill = new barebonesWASI();
         wasi_snapshot_preview1: {
             clock_time_get: () => console.log("clock_time_get"),
             environ_get: () => console.log("environ_get"),
-            environ_sizes_get: () => console.log("environ_sizes_get"),
+            environ_sizes_get: () => {},
             fd_close: () => console.log("fd_close"),
             fd_fdstat_get: () => console.log("fd_fdstat_get"),
             fd_fdstat_set_flags: () => console.log("fd_fdstat_set_flags"),
