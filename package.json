@@ -1,6 +1,6 @@
 {
   "name": "dot2svg-wasm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for converting Graphviz \"dot\" graphs to SVG",
   "type": "module",
   "main": "dot2svg.js",
@@ -11,7 +11,7 @@
   "scripts": {
     "package": "node build/package.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "wasm-c-string": "git+https://github.com/jaredkrinke/modules.git#wasm-c-string-1.0.1"
   }
 }
