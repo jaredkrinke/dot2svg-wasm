@@ -1,10 +1,14 @@
 import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
 import { createCString, receiveCString } from "wasm-c-string";
+
+const pathToModule = path.join(path.dirname(fileURLToPath(import.meta.url)), "dot2svg.wasm");
 
 (async () => {
     const textDecoder = new TextDecoder();
     let memory;
-    const module = await WebAssembly.instantiate(await fs.promises.readFile("./dot2svg.wasm"), {
+    const module = await WebAssembly.instantiate(await fs.promises.readFile(pathToModule), {
         wasi_snapshot_preview1: {
             fd_write: (fileDescriptor, ioVectorsBaseAddress, ioVectorsCount, returnBytesWrittenAddress) => {
                 // This is needed to forward Graphviz logging to the console
@@ -72,7 +76,7 @@ import { createCString, receiveCString } from "wasm-c-string";
     memory = module.instance.exports.memory;
 
     // String used for testing (from command line or hard-coded)
-    const dotString = "digraph { a -> b }";
+    const dotString = process.argv[2] ?? "digraph { a -> b }";
     createCString(module, dotString, (dotStringAddress) => {
         const svgString = receiveCString(module, () => module.instance.exports.dot2svg(dotStringAddress));
         console.log(svgString);
